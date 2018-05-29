@@ -79,7 +79,8 @@ void Start () {
 ```
 > 先生成最基本的旋转粒子系统，生成代码如上，生成的效果如下，但是发现有一个问题就是粒子系统在抖动。
 
-   <img src="http://imglf6.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHZ2pRQ3VGYTgwUEVzcUVkemV4cW0yTk5DMVRXOW9MM2RRPT0.gif"  />  
+>     gif动图连接（太大无法加载出来）  
+http://imglf6.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHZ2pRQ3VGYTgwUEVzcUVkemV4cW0yTk5DMVRXOW9MM2RRPT0.gif  
 
 > 调试发现是Particle system的simulation speed不为0导致粒子系统一直在抖动，于是修改对应的变量，修改方法如下：
 
@@ -100,7 +101,8 @@ for (int i = 0; i < count; i++) {
 	_Particles [i].position = new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
 	}
 ```
-   <img src="http://imglf5.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHbERhYjZQTnZnb3hDRDdoVDg3cVhCemN2TU9KeHp1cWd3PT0.gif"  />  
+  gif动图连接（太大无法加载出来）  
+  http://imglf5.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHbERhYjZQTnZnb3hDRDdoVDg3cVhCemN2TU9KeHp1cWd3PT0.gif  
    
    
 > 继续修改，为了使粒子的半径呈现随机移动的效果，加入PerlinNoise函数
@@ -123,4 +125,6 @@ for (int i = 0; i < count; i++) {
 ```
 > 最终效果如下：(但是感觉效果还是不够，一方面是粒子的种类素材,一方面是受限于系统粒子数量太少)
 
+  gif动图连接（太大无法加载出来）  
+  
    <img src="http://imglf6.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHaEErUWxSajBwYjJ6YWpUcU1vdXdEcGRMY0toamFkOHJ3PT0.gif"  />  
