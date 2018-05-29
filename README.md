@@ -127,4 +127,4 @@ for (int i = 0; i < count; i++) {
 
   gif动图连接（太大无法加载出来）  
   
-   <img src="http://imglf6.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHaEErUWxSajBwYjJ6YWpUcU1vdXdEcGRMY0toamFkOHJ3PT0.gif"  />  
+http://imglf6.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHaEErUWxSajBwYjJ6YWpUcU1vdXdEcGRMY0toamFkOHJ3PT0.gif
