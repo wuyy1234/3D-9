@@ -49,32 +49,33 @@ public class  partical : MonoBehaviour {
 
 	public float speed = 0.5f;
 void Start () {
-		_ParticleSystem = this.GetComponent<ParticleSystem>();
-		_Particles = new ParticleSystem.Particle[count];
+	_ParticleSystem = this.GetComponent<ParticleSystem>();
+	_Particles = new ParticleSystem.Particle[count];
 
-		_ParticleSystem.Emit (count);//发射
-		_ParticleSystem.GetParticles (_Particles);//将particle连接到_ParticleSystem
-		_particalPos = new particalPos[count];
+	_ParticleSystem.Emit (count);//发射
+	_ParticleSystem.GetParticles (_Particles);//将particle连接到_ParticleSystem
+	_particalPos = new particalPos[count];
 
-		float angleTemp=0, radiusTemp = 0,radiusTemp1 = 0,radiusTemp2 = 0,timeTemp=0;
-		for (int i = 0; i < count; i++) {
-			angleTemp = Random.Range (0f,360f);
-			_Particles[i].position=new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
-		}
-		_ParticleSystem.SetParticles (_Particles, count);
+	float angleTemp=0, radiusTemp = 0,radiusTemp1 = 0,radiusTemp2 = 0,timeTemp=0;
+	for (int i = 0; i < count; i++) {
+		angleTemp = Random.Range (0f,360f);
+		_Particles[i].position=new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
 	}
+	_ParticleSystem.SetParticles (_Particles, count);
+	}
+```
+```
   void Update () {
-
-		for (int i = 0; i < count; i++) {
-			if (i%7>2) {
-				_particalPos[i].angle=((float)(_particalPos[i].angle+(0.3))%360;
-			} else {
-				_particalPos[i].angle=((float)(_particalPos[i].angle-(0.3))360;
-			}
-			_Particles [i].position = new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
+	for (int i = 0; i < count; i++) {
+		if (i%7>2) {
+			_particalPos[i].angle=((float)(_particalPos[i].angle+(0.3))%360;
+		} else {
+			_particalPos[i].angle=((float)(_particalPos[i].angle-(0.3))360;
 		}
-		_ParticleSystem.SetParticles (_Particles, count);
+		_Particles [i].position = new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
 	}
+	_ParticleSystem.SetParticles (_Particles, count);
+}
 ```
 > 先生成最基本的旋转粒子系统，生成代码如上，生成的效果如下，但是发现有一个问题就是粒子系统在抖动。
 
@@ -84,20 +85,20 @@ void Start () {
 
 ```
     //修改simulationSpeed,避免震动
-		var main=_ParticleSystem.main;
-		main.simulationSpeed = 0f;
+	var main=_ParticleSystem.main;
+	main.simulationSpeed = 0f;
 ```
 
 > 解决了抖动问题之后，加入反向旋转，以及为了呈现粒子内部旋转角速度比外部更快的效果，修改update里面的函数。效果如下：
 ```
 for (int i = 0; i < count; i++) {
-			if (i%7>2) {
-				_particalPos[i].angle=((float)(_particalPos[i].angle+(0.3/(_particalPos[i].radius-minRadius/2)*minRadius)))%360;
-			} else {
-				_particalPos[i].angle=((float)(_particalPos[i].angle-(0.3/(_particalPos[i].radius-minRadius/2)*minRadius)))%360;
-			}
-			_Particles [i].position = new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
-		}
+	if (i%7>2) {
+		_particalPos[i].angle=((float)(_particalPos[i].angle+(0.3/(_particalPos[i].radius-minRadius/2)*minRadius)))%360;
+	} else {
+		_particalPos[i].angle=((float)(_particalPos[i].angle-(0.3/(_particalPos[i].radius-minRadius/2)*minRadius)))%360;
+	}
+	_Particles [i].position = new Vector3 (_particalPos[i].getX(),_particalPos [i].getY(),0 );
+	}
 ```
    <img src="http://imglf5.nosdn.127.net/img/Z281REhERnhNZlhBVVE4ejRLSGRHbERhYjZQTnZnb3hDRDdoVDg3cVhCemN2TU9KeHp1cWd3PT0.gif"  />  
    
